@@ -1,0 +1,36 @@
+
+
+/*
+  Pushbutton-Controlled LED Program with Inverted State
+  This program uses a pushbutton connected to digital pin 2 with an internal pull-up resistor.
+  When the button is pressed, it changes the state of LEDs connected to pins 8, 12, and 13:
+    - All LEDs are off when the button is not pressed.
+    - All LEDs turn on when the button is pressed.
+  The program also displays the button state on the Serial Monitor.
+  Type: Digital input and output control
+  Goal: Control multiple LEDs based on the inverted state of the pushbutton and display the state on the Serial Monitor.
+*/
+// Define the pin numbers
+int pushButton = 2;         // Assign pin 2 to the pushbutton
+int redpin = 12;            // Assign pin 12 to a red LED (or any other device)
+int buttonstate = 0;        // Variable to store the state of the pushbutton
+// The setup function runs once when the program starts
+void setup() {
+  Serial.begin(9600);                // Initialize serial communication at 9600 baud for Serial Monitor
+  pinMode(pushButton, INPUT_PULLUP); // Set pushButton as an input with an internal pull-up resistor
+  pinMode(8, OUTPUT);                // Set pin 8 as an output (for an LED or other device)
+  pinMode(12, OUTPUT);               // Set pin 12 as an output (for an LED or other device)
+  pinMode(13, OUTPUT);               // Set pin 13 as an output (for an LED or other device)
+}
+// The loop function runs repeatedly, creating the main program behavior
+void loop() {
+  int buttonState = digitalRead(pushButton); // Read the current state of the pushbutton (HIGH or LOW)
+  
+  digitalWrite(13, !buttonState);            // Write the inverted button state to pin 13 (turns on LED if button pressed)
+  digitalWrite(12, !buttonState);            // Write the inverted button state to pin 12 (turns on LED if button pressed)
+  digitalWrite(8, !buttonState);             // Write the inverted button state to pin 8 (turns on LED if button pressed)
+  
+  Serial.println(buttonState);               // Print the current button state to the Serial Monitor (1 for HIGH, 0 for LOW)
+  
+  delay(1);                                  // Small delay for stability between reads
+}
