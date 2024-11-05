@@ -1,0 +1,62 @@
+
+
+/*
+  Back-and-Forth LED Chaser Program
+  This program creates a back-and-forth (ping-pong) chaser effect using three LEDs connected to digital pins 9, 8, and 7 on an Arduino.
+  The LEDs turn on one by one in a forward sequence, then turn off in the same order. After that, the LEDs turn on and off in reverse order.
+  
+  Type: Digital output control
+  Goal: Sequentially turn on and off LEDs to create a back-and-forth chasing light effect.
+*/
+int timewait = 300;  // Sets the delay time to 300 milliseconds for each step in the sequence
+void setup() { 
+  pinMode(9, OUTPUT);  // Initializes pin 9 as an output to control an LED
+  pinMode(8, OUTPUT);  // Initializes pin 8 as an output to control an LED
+  pinMode(7, OUTPUT);  // Initializes pin 7 as an output to control an LED
+} 
+// Main loop function that repeats the chaser pattern indefinitely
+void loop() { 
+  // Forward sequence: Turns on LEDs in the order 9 -> 8 -> 7
+  
+  digitalWrite(9, HIGH); // Turns on the LED connected to pin 9
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(8, HIGH); // Turns on the LED connected to pin 8
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(7, HIGH); // Turns on the LED connected to pin 7
+  delay(timewait);       // Waits for the specified delay time
+  
+  // Turns off LEDs in the same order they were turned on: 9 -> 8 -> 7
+  
+  digitalWrite(9, LOW);  // Turns off the LED connected to pin 9
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(8, LOW);  // Turns off the LED connected to pin 8
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(7, LOW);  // Turns off the LED connected to pin 7
+  delay(timewait);       // Waits for the specified delay time
+  
+  // Reverse sequence: Turns on LEDs in the order 7 -> 8 -> 9
+  
+  digitalWrite(7, HIGH); // Turns on the LED connected to pin 7
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(8, HIGH); // Turns on the LED connected to pin 8
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(9, HIGH); // Turns on the LED connected to pin 9
+  delay(timewait);       // Waits for the specified delay time
+  
+  // Turns off LEDs in the same reverse order they were turned on: 7 -> 8 -> 9
+  
+  digitalWrite(7, LOW);  // Turns off the LED connected to pin 7
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(8, LOW);  // Turns off the LED connected to pin 8
+  delay(timewait);       // Waits for the specified delay time
+  
+  digitalWrite(9, LOW);  // Turns off the LED connected to pin 9
+  delay(timewait);       // Waits for the specified delay time
+}
