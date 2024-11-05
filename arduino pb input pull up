@@ -1,0 +1,25 @@
+
+
+/*
+  Pushbutton State Display Program
+  This program uses a pushbutton connected to digital pin 2 with an internal pull-up resistor.
+  It reads the state of the pushbutton (HIGH or LOW) and displays the state on the Serial Monitor.
+  When the button is released, it reads HIGH (1), and when pressed, it reads LOW (0).
+  
+  Type: Digital input reading with Serial output
+  Goal: Display the state of the pushbutton on the Serial Monitor.
+*/
+// Define the pin number where the pushbutton is connected
+const int pushButton = 2;  // Assign pin 2 to pushButton
+void setup() {
+  Serial.begin(9600);                // Initialize serial communication at 9600 baud for the Serial Monitor
+  pinMode(pushButton, INPUT_PULLUP); // Set pushButton as an input with an internal pull-up resistor enabled
+}
+void loop() {
+  int buttonState = digitalRead(pushButton); // Read the current state of the pushbutton (HIGH or LOW)
+  
+  Serial.print("buttonState = ");            // Print label for button state to the Serial Monitor
+  Serial.println(buttonState);               // Print the current button state (1 for HIGH, 0 for LOW)
+  
+  delay(10);                                 // Small delay to stabilize the reading
+}
