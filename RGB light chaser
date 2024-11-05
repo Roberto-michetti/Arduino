@@ -1,0 +1,34 @@
+
+/*
+  RGB LED Color Chaser Program
+  This program controls an RGB LED connected to digital pins 8, 9, and 10 on an Arduino.
+  It cycles through the colors red, green, and blue by turning on one color at a time, creating a simple chaser effect.
+  Type: Digital output control
+  Goal: Sequentially turn on each color (red, green, and blue) of the RGB LED to create a cycling effect.
+*/
+// Pin definitions
+int redPin = 8;    // Assign pin 8 to the red channel of the RGB LED
+int greenPin = 9;  // Assign pin 9 to the green channel of the RGB LED
+int bluePin = 10;  // Assign pin 10 to the blue channel of the RGB LED
+void setup() {
+  pinMode(redPin, OUTPUT);   // Set red pin as an output
+  pinMode(greenPin, OUTPUT); // Set green pin as an output
+  pinMode(bluePin, OUTPUT);  // Set blue pin as an output
+}
+void loop() {
+  // Turn on red, off green and blue
+  digitalWrite(redPin, HIGH);    // Turn on the red color
+  digitalWrite(greenPin, LOW);   // Turn off the green color
+  digitalWrite(bluePin, LOW);    // Turn off the blue color
+  delay(250);                    // Wait for 250 milliseconds
+  // Turn on green, off red and blue
+  digitalWrite(redPin, LOW);     // Turn off the red color
+  digitalWrite(greenPin, HIGH);  // Turn on the green color
+  digitalWrite(bluePin, LOW);    // Turn off the blue color
+  delay(250);                    // Wait for 250 milliseconds
+  // Turn on blue, off red and green
+  digitalWrite(redPin, LOW);     // Turn off the red color
+  digitalWrite(greenPin, LOW);   // Turn off the green color
+  digitalWrite(bluePin, HIGH);   // Turn on the blue color
+  delay(250);                    // Wait for 250 milliseconds
+}
