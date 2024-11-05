@@ -1,0 +1,36 @@
+
+/*
+  Pushbutton-Controlled LED Program
+  This program uses a pushbutton connected to digital pin 2 with an internal pull-up resistor.
+  When the button is pressed, it changes the state of LEDs connected to pins 8, 12, and 13:
+    - Pin 13 LED is always on.
+    - Pin 12 LED turns on when the button is pressed and off when released.
+    - Pin 8 LED turns on when the button is released and off when pressed.
+  The program also prints the button state to the Serial Monitor.
+  Type: Digital input and output control
+  Goal: Control LEDs based on the pushbutton's state and display the state on the Serial Monitor.
+*/
+// Define the pin numbers
+int pushButton = 2; // Assign pin 2 to pushButton
+int redpin = 12;    // Assign pin 12 to an output (used for button control)
+int buttonstate = 0; // Variable to store the button's state
+// The setup function runs once when the program starts
+void setup() {
+  Serial.begin(9600);                // Initialize serial communication at 9600 baud for Serial Monitor
+  pinMode(pushButton, INPUT_PULLUP); // Set pushButton as an input with an internal pull-up resistor
+  pinMode(8, OUTPUT);                // Set pin 8 as an output (LED controlled by button state)
+  pinMode(12, OUTPUT);               // Set pin 12 as an output (LED controlled by inverted button state)
+  pinMode(13, OUTPUT);               // Set pin 13 as an output (LED always on)
+}
+// The loop function runs repeatedly, creating the main program behavior
+void loop() {
+  int buttonState = digitalRead(pushButton); // Read the current state of the pushbutton (HIGH or LOW)
+  
+  digitalWrite(13, HIGH);         // Always keep the LED on pin 13 turned on
+  digitalWrite(12, !buttonState); // Turn on LED on pin 12 when button is pressed, off when released
+  digitalWrite(8, buttonState);   // Turn on LED on pin 8 when button is released, off when pressed
+  
+  Serial.println(buttonState);    // Print the current button state to the Serial Monitor (1 for HIGH, 0 for LOW)
+  
+  delay(1);                       // Small delay for stability between reads
+}
