@@ -1,0 +1,16 @@
+
+/*
+  LED Brightness Control Program
+  This program uses PWM (Pulse Width Modulation) to control the brightness of LEDs connected to pins 3, 5, and 6 on an Arduino.
+  Each LED is set to a specific brightness level by using the `analogWrite` function with different values for each pin.
+  Type: Analog output control (using PWM)
+  Goal: Set different brightness levels for three LEDs connected to PWM-capable pins.
+*/
+void setup() {
+  // put your setup code here, to run once
+}
+void loop() {
+  analogWrite(3, 100); // Set the brightness of the LED on pin 3 to approximately (100 out of 255)
+  analogWrite(5, 25);  // Set the brightness of the LED on pin 5 to approximately (25 out of 255)
+  analogWrite(6, 50);  // Set the brightness of the LED on pin 6 to approximately (50 out of 255)
+}
